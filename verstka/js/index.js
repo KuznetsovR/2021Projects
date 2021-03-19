@@ -128,7 +128,9 @@ $(document).ready(() => {
   //////////////////menu list open
   const menuList = document.getElementById("mob-nav-list");
   let openPointsArr = [];
-  menuList.onclick = function () {
+
+
+  menuList.onclick = function (event) {
     //console.log(event.target)
     let counter = 0;
     const mobNavPoints = document.querySelectorAll(".mob-nav-point");

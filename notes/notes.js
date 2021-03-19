@@ -1,3 +1,4 @@
+
 import { NotesModel } from './notes/notes-model.js'
 import { NotesView } from './notes/notes-view.js'
 import { Note } from './shared/note.js'
@@ -19,6 +20,8 @@ const notesModel = new NotesModel([], apiService);
 const noteEditModel = new NoteEditModel();
 
 const notesField = document.querySelector(".notes");
+
+
 
 let editor;
 
@@ -222,3 +225,37 @@ for (area of textarea){
     };
 
 }*/
+let arr = [1, 2, 3, 4, 5];
+console.log(filter((el) => el % 2 === 1, arr))
+function filter(predicat, arr) {
+  const newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (predicat(arr[i])) {
+      newArr.push(arr[i])
+    }
+  }
+  return newArr;
+}
+console.log(map((el) => el * el, arr))
+function map(mapper, arr) {
+  const newArr = new Array(arr.length);
+  for (let i = 0; i < arr.length; i++) {
+    newArr[i] = mapper(arr[i]);
+  }
+  return newArr;
+}
+console.log(fold((accumulator, el) => accumulator + el, 0, arr))
+
+function fold(reducer, initial, arr) {
+  let w = initial;
+  for (let i = 0; i < arr.length; i++) {
+    w = reducer(w, arr[i])
+  }
+  return w;
+}
+console.log(filterWithFold((el) => el % 2 === 1, arr))
+
+function filterWithFold(predicat, arr){
+  let newArr = [];
+  return fold((filtered, el) => predicat(el) ? filtered.concat(el) : filtered, newArr, arr);
+}
