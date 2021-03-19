@@ -11,10 +11,10 @@ export class NotesView {
         this.container = container;
     }
     onLoadingStatus(status) {
-        if(status){
+        if (status) {
             this.loadingModal.classList.add("opened")
             this.modalOverlay.classList.add("opened")
-        }else{
+        } else {
             this.loadingModal.classList.remove("opened")
             this.modalOverlay.classList.remove("opened")
         }
@@ -38,11 +38,23 @@ export class NotesView {
         this.onLoadingStatus(this.model.loadingStatus.value)
         // this.container
         // const fragment = new DocumentFragment();
-        for (const note of this.model.notes) {
-            const view = new NoteView(note);
-            view.renderTo(this.container);
-        }
-        // this.container.appendChild(fragment);
+        // for (const note of this.model.notes) {
+        //     const view = new NoteView(note);
+        //     view.renderTo(this.container);
+        // }
+        this.container.innerHTML = this.model.notes.reduce((accumulator, el) => el.heading[0] === 'a' ? accumulator + `<div class='note' id='${el.id}'>
+        <div class='note-heading'>
+            <div class="delete-button"></div>
+            <div class='note-heading-text'>
+            ${el.heading}
+            </div>
+        </div>
+        <div class='note-content'>
+            <div class='note-content-text'>
+            ${el.content}
+            </div>
+        </div>
+    </div>`: accumulator, '' )
     }
 }
 
