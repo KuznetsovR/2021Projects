@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
             convert: "USD",
         },
         headers: {
-            "X-CMC_PRO_API_KEY": "25296a12-f3b9-4083-913b-0d8dd28bdfec",
+            "X-CMC_PRO_API_KEY": "",
         },
         json: true,
         gzip: true,
